@@ -1,4 +1,4 @@
-# URL Shortener (Web)
+# URL Shortener Web
 <img alt="alt_text" width="100%" src="./thumbnail.png" />
 
 This web application is designed to shorten long URLs into shorter ones. It is built using Next.js and TypeScript. It allows users to enter a long URL, which is then converted into a shorter, more manageable link.
