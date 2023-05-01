@@ -7,6 +7,7 @@ const AccessShortenedURLPage: React.FC = () => {
   const router = useRouter()
   const { identifier } = router.query
 
+  // Get original URL from unique code or identifier
   React.useEffect(() => {
     if (identifier) {
       const redirectToOriginalUrl = async () => {
@@ -28,11 +29,8 @@ const AccessShortenedURLPage: React.FC = () => {
     }
   }, [identifier])
 
-
-  return (
-    <>
-    </>
-  )
+  // Nothing to render, even better we could put loading screen for better user feedback
+  return <></>
 }
 
 export default AccessShortenedURLPage
