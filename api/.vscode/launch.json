@@ -1,0 +1,61 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Shell+",
+      "type": "python",
+      "request": "launch",
+      "stopOnEntry": false,
+      "program": "${workspaceRoot}/manage.py",
+      "args": [
+        "shell_plus",
+      ],
+      "envFile": "${workspaceFolder}/.main.env"
+    },
+    {
+      "name": "Migrate",
+      "type": "python",
+      "request": "launch",
+      "stopOnEntry": false,
+      "program": "${workspaceRoot}/manage.py",
+      "args": [
+        "migrate",
+      ],
+      "envFile": "${workspaceFolder}/.main.env"
+    },
+    {
+      "name": "Migrate specific",
+      "type": "python",
+      "request": "launch",
+      "stopOnEntry": false,
+      "program": "${workspaceRoot}/manage.py",
+      "args": [
+        "migrate accounts 0087_auto_20230301_1612",
+      ],
+      "envFile": "${workspaceFolder}/.main.env"
+    },
+    {
+      "name": "Run Server",
+      "type": "python",
+      "request": "launch",
+      "stopOnEntry": false,
+      "program": "${workspaceRoot}/manage.py",
+      "args": [
+        "runserver",
+        "8000",
+        "--noreload"
+      ],
+      "envFile": "${workspaceFolder}/.main.env"
+    },
+  ]
+}
