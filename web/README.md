@@ -1,7 +1,7 @@
 # URL Shortener Web
 <img alt="alt_text" width="100%" src="./thumbnail.png" />
 
-This web application is designed to shorten long URLs into shorter ones. It is built using Next.js and TypeScript. It allows users to enter a long URL, which is then converted into a shorter, more manageable link.
+This web application is designed to shorten long URLs into shorter one. It is built using Next.js and TypeScript. It allows users to enter a long URL, which is then converted into a shorter, more manageable link.
 
 ## Installation
 
@@ -23,4 +23,4 @@ You can also view a shortened URL that has been generated and click the shorten 
 
 ## Technical Details
 
-This application is built using NextJS and TypeScript. The server uses an SQLite/PostgreSQL database to store the mapping between long and short URLs.
+This application is built using NextJS and TypeScript. The server uses an PostgreSQL database to store the mapping between long and short URLs.
