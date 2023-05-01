@@ -7,6 +7,7 @@ import configuration from '@/configuration'
 
 const ShorteningURLPage: React.FC = () => {
   const [originalUrl, setOriginalUrl] = React.useState<string>()
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [urlIdentifier, setUrlIdentifier] = React.useState<string>()
 
   const shortenedUrl = React.useMemo(() => {
@@ -27,21 +28,50 @@ const ShorteningURLPage: React.FC = () => {
 
   const generateURLIdentifier = React.useCallback(
     async (url: string) => {
-      const payload = await fetch(configuration.API_BASE_URL + '/services/shortening-url', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          url,
-        })
-      }).then(response => response.json())
+      setIsLoading(true)
 
-      setUrlIdentifier(payload.identifier)
+      try {
+        const payload = await fetch(configuration.API_BASE_URL + '/services/shortening-url', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            url,
+          })
+        }).then(response => response.json())
+  
+        setUrlIdentifier(payload.identifier)
+
+      } catch (exception) {
+        // Nothing TODO
+      } finally {
+        // Either success or failed, set loading flag to false
+        setIsLoading(false)
+      }
     },
     [configuration.API_BASE_URL]
   )
+
+  const generateUrlIdentifierFromOriginalUrl = React.useCallback(() => {
+    if (originalUrl) {
+      generateURLIdentifier(originalUrl)
+    }
+  }, [originalUrl, generateURLIdentifier])
+
+  React.useEffect(() => {
+    const listener = (event: KeyboardEvent) => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        event.preventDefault();
+        generateUrlIdentifierFromOriginalUrl()
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, [generateUrlIdentifierFromOriginalUrl]);
 
 
   return (
@@ -62,11 +92,7 @@ const ShorteningURLPage: React.FC = () => {
               setOriginalUrl(event.target.value)
             }}
           />
-          <Button variant='contained' onClick={() => {
-            if (originalUrl) {
-              generateURLIdentifier(originalUrl)
-            }
-          }}>Shorten</Button>
+          <Button variant='contained' type="submit" onClick={generateUrlIdentifierFromOriginalUrl} disabled={isLoading}>Shorten</Button>
         </Stack>
         <Stack 
           flexDirection='row'
@@ -75,6 +101,7 @@ const ShorteningURLPage: React.FC = () => {
             margin: '20px'
           }}
         >
+          {isLoading? <Typography>Generating...</Typography>: null}
           <a href={`/${urlIdentifier}`} target='_blank'>
             <Typography>
               {shortenedUrl}
