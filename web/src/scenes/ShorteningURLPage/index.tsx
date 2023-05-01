@@ -26,7 +26,7 @@ const ShorteningURLPage: React.FC = () => {
     return null
   }, [urlIdentifier])
 
-  const generateURLIdentifier = React.useCallback(
+  const generateUrlIdentifier = React.useCallback(
     async (url: string) => {
       setIsLoading(true)
 
@@ -56,9 +56,9 @@ const ShorteningURLPage: React.FC = () => {
 
   const generateUrlIdentifierFromOriginalUrl = React.useCallback(() => {
     if (originalUrl) {
-      generateURLIdentifier(originalUrl)
+      generateUrlIdentifier(originalUrl)
     }
-  }, [originalUrl, generateURLIdentifier])
+  }, [originalUrl, generateUrlIdentifier])
 
   React.useEffect(() => {
     const listener = (event: KeyboardEvent) => {
