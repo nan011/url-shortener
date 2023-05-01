@@ -2,10 +2,19 @@ version: "3"
 
 services:
   web:
-    build: .
+    build: ./web
+    command: pnpm run dev  # Run the development server (Not production friendly)
+    volumes:
+      - ./web:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+  api:
+    build: ./api
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/app
+      - ./api:/app
     ports:
       - "8000:8000"
     depends_on:
@@ -16,7 +25,6 @@ services:
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
-
   db:
     image: postgres
     restart: always
