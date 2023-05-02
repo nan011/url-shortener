@@ -11,7 +11,7 @@ This web application is designed to shorten long URLs into shorter one.
 <img alt="alt_text" width="100%" src="./flow.png" />
 
 
-## Run Entire Systems via Docker
+## Run Entire Systems via Docker Compose
 1. Ensure you have installed Docker in order to run this command. Also ensure port 3000 and 8000 are not occupied so the app can utilize the port in order to run.
     ```
     docker-compose up --build
@@ -23,3 +23,7 @@ This web application is designed to shorten long URLs into shorter one.
 - Windows 11 Home (22621.1555)
 - Docker version 23.0.5, build bc4487a
 - Docker Compose version v2.17.3
+
+
+### Notes
+- This setup should be used on local development because the running command is using development command, not production friendly command.

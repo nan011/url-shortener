@@ -7,7 +7,7 @@ RUN npm install -g pnpm@7.24.3
 # Set the working directory inside the container
 WORKDIR /app/
 
-# Copy package.json, package-lock.json and pnpm-lock.yaml to the container
+# Copy everything into working directory
 COPY . /app/
 
 # Install dependencies with pnpm

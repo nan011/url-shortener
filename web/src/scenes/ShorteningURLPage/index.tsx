@@ -5,7 +5,7 @@ import { Button, Stack, TextField, Typography } from '@mui/material'
 
 import configuration from '@/configuration'
 
-import { URL_REGEX } from './constants'
+import { BASE_URL_REGEX, URL_REGEX } from './constants'
 
 const ShorteningURLPage: React.FC = () => {
   const [originalUrl, setOriginalUrl] = React.useState<string>()
@@ -15,8 +15,7 @@ const ShorteningURLPage: React.FC = () => {
 
   const shortenedUrl = React.useMemo(() => {
     if (urlIdentifier) {
-      const regex = /^https?:\/\/[^\/]+/;
-      const baseUrl = window.location.href?.match(regex)?.[0];
+      const baseUrl = window.location.href?.match(BASE_URL_REGEX)?.[0];
     
       if (baseUrl) {
         return baseUrl + '/' + urlIdentifier;
@@ -54,6 +53,7 @@ const ShorteningURLPage: React.FC = () => {
         setIsLoading(false)
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [configuration.API_BASE_URL]
   )
 
