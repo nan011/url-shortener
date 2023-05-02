@@ -1,18 +1,21 @@
-version: "3"
+version: "3.8"
 
 services:
   web:
     build: ./web
     command: pnpm run dev  # Run the development server (Not production friendly)
     volumes:
-      - ./web:/app
+      - ./web/src:/app/src
+      - ./web/public:/app/public
     ports:
       - "3000:3000"
     depends_on:
       - api
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
   api:
     build: ./api
-    command: python manage.py runserver 0.0.0.0:8000
+    command: sh -c 'python manage.py migrate && python manage.py runserver 0.0.0.0:8000' # Run the development server (Not production friendly)
     volumes:
       - ./api:/app
     ports:
@@ -20,13 +23,13 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_NAME=mydatabase
-      - DATABASE_USER=myuser
-      - DATABASE_PASSWORD=myuser
-      - DATABASE_HOST=db
-      - DATABASE_PORT=5432
+      DATABASE_NAME: mydatabase
+      DATABASE_USER: myuser
+      DATABASE_PASSWORD: mypassword
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
   db:
-    image: postgres
+    image: postgres:14.0
     restart: always
     environment:
       POSTGRES_USER: myuser
@@ -34,6 +37,8 @@ services:
       POSTGRES_DB: mydatabase
     volumes:
       - data:/var/lib/postgresql/data/
+    ports:  
+      - "5432:5432"
 
 volumes:
   data:

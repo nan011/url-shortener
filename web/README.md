@@ -3,17 +3,17 @@
 
 This web application is designed to shorten long URLs into shorter one. It is built using Next.js and TypeScript. It allows users to enter a long URL, which is then converted into a shorter, more manageable link.
 
-## Installation
+## Quick Setup (Without Docker)
 
 To run the application locally, please follow these steps:
 
-1. Clone the repository to your local machine.
-2. Create file `.env.local` and set environment variables
+1. Create file `.env.local` and set environment variables
 ```
-API_BASE_URL=<YOUR-API-BASE-URL>   // Example: http://localhost:8000
+NEXT_PUBLIC_API_BASE_URL=<YOUR-API-BASE-URL>   // Example: http://localhost:8000
 ``` 
 2. Install dependencies using `pnpm install`
 3. Start the development server using `pnpm run dev`
+
 
 ## Usage
 

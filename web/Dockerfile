@@ -1,20 +1,17 @@
 # Use an official Node runtime as the parent image
-FROM node:14-alpine
+FROM node:16-alpine
 
 # Install pnpm
-RUN npm install -g pnpm
+RUN npm install -g pnpm@7.24.3
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /app/
 
 # Copy package.json, package-lock.json and pnpm-lock.yaml to the container
-COPY package*.json pnpm-lock.yaml ./
+COPY . /app/
 
 # Install dependencies with pnpm
-RUN pnpm install
-
-# Copy the rest of the application files to the container
-COPY . .
+RUN pnpm install --frozen-lockfile
 
 # Run the app on port 3000
 EXPOSE 3000

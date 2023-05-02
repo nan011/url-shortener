@@ -2,23 +2,21 @@
 
 This is a URL shortener API built using Django, Django Rest Framework, PostgreSQL, and Python.
 
-## Quick Setup
+## Quick Setup (Without Docker)
 
 To set up the project and run it locally, follow these steps:
 
-1. Clone the repository:
-2. Create and activate a virtual environment:
+1. Create and activate a virtual environment:
    ```
    pipenv shell
-   source venv/bin/activate
    ```
 
-3. Install the required packages:
+2. Install the required packages:
    ```
    pipenv install
    ```
 
-4. Create file `.env` and set environment variables
+3. Create file `.env` and set environment variables
     ```
     DATABASE_NAME=<DATABASE-NAME>
     DATABASE_USER=<ROLE-OR-USER-NAME>
@@ -27,12 +25,12 @@ To set up the project and run it locally, follow these steps:
     DATABASE_PORT=<DATABASE-HOST-PORT>
     ```
 
-5. Set up the database:
+4. Set up the database:
    ```
    python manage.py migrate
    ```
 
-6. Run the server:
+5. Run the server:
    ```
    python manage.py runserver
    ```
