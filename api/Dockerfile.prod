@@ -8,6 +8,9 @@ COPY . /app/
 
 # Install Python dependencies
 WORKDIR /app/
-RUN pipenv install --ignore-pipfile --system --dev
+RUN pipenv install --ignore-pipfile --system
+
+# Used by production only
+RUN pipenv install gunicorn
 
 
