@@ -1,6 +1,7 @@
 # URL Shorterner App
-<img alt="alt_text" width="100%" src="./web/thumbnail.png" />
+[<img alt="alt_text" width="100%" src="./web/thumbnail.png" />](https://url-shortener-web.onrender.com/)
 This web application is designed to shorten long URLs into shorter one.
+Live app link: https://url-shortener-web.onrender.com/
 
 ## Documentations
 
