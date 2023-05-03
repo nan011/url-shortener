@@ -124,11 +124,13 @@ const ShorteningURLPage: React.FC = () => {
           }}
         >
           {isLoading? <Typography>Generating...</Typography>: null}
-          <a href={shortenedUrl} target='_blank'>
-            <Typography>
-              {shortenedUrl}
-            </Typography>
-          </a>
+          {shortenedUrl ? (
+            <a href={shortenedUrl} target='_blank' rel='noopener noreferrer'>
+              <Typography>
+                {shortenedUrl}
+              </Typography>
+            </a>
+          ): null}
         </Stack>
       </Stack>
     </>
