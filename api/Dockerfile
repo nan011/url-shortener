@@ -10,3 +10,7 @@ COPY . /app/
 WORKDIR /app/
 RUN pipenv install --ignore-pipfile --system --dev
 
+# Used by production only
+RUN pipenv install gunicorn
+
+
