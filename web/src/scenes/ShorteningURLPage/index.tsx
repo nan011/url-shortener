@@ -19,7 +19,7 @@ const ShorteningURLPage: React.FC = () => {
       const baseUrl = window.location.href?.match(BASE_URL_REGEX)?.[0];
     
       if (baseUrl) {
-        return baseUrl + '/' + urlIdentifier;
+        return baseUrl + '/?identifier=' + urlIdentifier;
 
       } else {
         return null;
@@ -124,7 +124,7 @@ const ShorteningURLPage: React.FC = () => {
           }}
         >
           {isLoading? <Typography>Generating...</Typography>: null}
-          <a href={`/?identifier=${urlIdentifier}`} target='_blank'>
+          <a href={shortenedUrl} target='_blank'>
             <Typography>
               {shortenedUrl}
             </Typography>
