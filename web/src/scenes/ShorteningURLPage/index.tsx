@@ -6,6 +6,7 @@ import { Button, Stack, TextField, Typography } from '@mui/material'
 import configuration from '@/configuration'
 
 import { BASE_URL_REGEX, URL_REGEX } from './constants'
+import { useRouter } from 'next/router'
 
 const ShorteningURLPage: React.FC = () => {
   const [originalUrl, setOriginalUrl] = React.useState<string>()
@@ -123,7 +124,7 @@ const ShorteningURLPage: React.FC = () => {
           }}
         >
           {isLoading? <Typography>Generating...</Typography>: null}
-          <a href={`/${urlIdentifier}`} target='_blank'>
+          <a href={`/?identifier=${urlIdentifier}`} target='_blank'>
             <Typography>
               {shortenedUrl}
             </Typography>

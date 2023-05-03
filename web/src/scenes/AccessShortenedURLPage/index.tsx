@@ -2,10 +2,11 @@ import React from 'react'
 import { useRouter } from 'next/router'
 
 import configuration from '@/configuration'
+import ShorteningURLPage from '../ShorteningURLPage'
 
 const AccessShortenedURLPage: React.FC = () => {
   const router = useRouter()
-  const { identifier } = router.query
+  const identifier = router?.query?.identifier
 
   // Get original URL from unique code or identifier
   React.useEffect(() => {
@@ -30,7 +31,11 @@ const AccessShortenedURLPage: React.FC = () => {
   }, [identifier])
 
   // Nothing to render, even better we could put loading screen for better user feedback
-  return <></>
+  if (identifier) {
+    return <></>
+  }
+
+  return <ShorteningURLPage />
 }
 
 export default AccessShortenedURLPage

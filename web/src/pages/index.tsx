@@ -1,1 +1,1 @@
-export { default } from '@/scenes/ShorteningURLPage';
+export { default } from '@/scenes/AccessShortenedURLPage';
