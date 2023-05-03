@@ -1,7 +1,7 @@
 # URL Shortener Web
-<img alt="alt_text" width="100%" src="./thumbnail.png" />
+[<img alt="alt_text" width="100%" src="./thumbnail.png" />](https://url-shortener-web.onrender.com/)
 
-This web application is designed to shorten long URLs into shorter one. It is built using Next.js and TypeScript. It allows users to enter a long URL, which is then converted into a shorter, more manageable link.
+This web application is designed to shorten long URLs into shorter one. It is built using Next.js and TypeScript. It allows users to enter a long URL, which is then converted into a shorter, more manageable link. Live app link: https://url-shortener-web.onrender.com/.
 
 ## Quick Setup (Without Docker)
 
